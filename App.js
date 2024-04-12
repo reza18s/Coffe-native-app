@@ -1,7 +1,9 @@
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+// import { } from "expo-status-bar";
+import { SafeAreaView, View, StatusBar } from "react-native";
 import { NativeWindStyleSheet } from "nativewind";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { NavigationContainer } from "@react-navigation/native";
+import AppNavigator from "./src/navigator/AppNavigator";
 
 NativeWindStyleSheet.setOutput({
    default: "native",
@@ -10,20 +12,15 @@ NativeWindStyleSheet.setOutput({
 const queryClient = new QueryClient();
 export default function App() {
    return (
-      <QueryClientProvider client={queryClient}>
-         <SafeAreaView>
-            <Text>Open up App.js to start working on your app!</Text>
-            <StatusBar style="auto" />
+      <>
+         <SafeAreaView className="flex-1">
+            <QueryClientProvider client={queryClient}>
+               <NavigationContainer>
+                  <AppNavigator></AppNavigator>
+               </NavigationContainer>
+            </QueryClientProvider>
          </SafeAreaView>
-      </QueryClientProvider>
+         <StatusBar style="auto" />
+      </>
    );
 }
-
-const styles = StyleSheet.create({
-   container: {
-      flex: 1,
-      backgroundColor: "#fff",
-      alignItems: "center",
-      justifyContent: "center",
-   },
-});
