@@ -31,14 +31,17 @@ export default function AppNavigator() {
             tabBarActiveTintColor: COLORS.primaryOrangeHex,
             tabBarBackground: () => (
                <BlurView
-                  className="absolute bottom-0 left-0 right-0 top-0"
-                  intensity={500}
+                  className="absolute bottom-0 left-0 right-0 top-0 bg-black/0"
+                  intensity={5}
                ></BlurView>
             ),
             tabBarStyle: {
+               position: "absolute",
                backgroundColor: COLORS.primaryBlackRGBA,
                height: 60,
                elevation: 0,
+               borderTopWidth: 0,
+               borderTopColor: "transparent",
             },
          })}
       >

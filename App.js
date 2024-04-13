@@ -1,5 +1,5 @@
 // import { } from "expo-status-bar";
-import { SafeAreaView, View, StatusBar } from "react-native";
+import { SafeAreaView, StatusBar } from "react-native";
 import { NativeWindStyleSheet } from "nativewind";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NavigationContainer } from "@react-navigation/native";
@@ -13,7 +13,7 @@ const queryClient = new QueryClient();
 export default function App() {
    return (
       <>
-         <SafeAreaView className="flex-1">
+         <SafeAreaView className="flex-1 bg-dark-200">
             <QueryClientProvider client={queryClient}>
                <NavigationContainer>
                   <AppNavigator></AppNavigator>
