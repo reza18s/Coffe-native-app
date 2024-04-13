@@ -4,6 +4,7 @@ import { NativeWindStyleSheet } from "nativewind";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NavigationContainer } from "@react-navigation/native";
 import AppNavigator from "./src/navigator/AppNavigator";
+import { COLORS } from "./src/theme/theme";
 
 NativeWindStyleSheet.setOutput({
    default: "native",
@@ -20,7 +21,7 @@ export default function App() {
                </NavigationContainer>
             </QueryClientProvider>
          </SafeAreaView>
-         <StatusBar style="auto" />
+         <StatusBar backgroundColor={COLORS.primaryBlackHex} style="auto" />
       </>
    );
 }
