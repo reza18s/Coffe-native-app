@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 import CoffeeData from "../data/CoffeeData";
 import BeansData from "../data/BeansData";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -15,6 +15,6 @@ export const useStore = create(
          FavoriteList: [],
          OrderHistory: [],
       }),
-      { name: "coffee-app", storage: createJSONStorage(() => AsyncStorage) },
+      { name: "coffee-app", storage: createJSONStorage(() => AsyncStorage()) },
    ),
 );

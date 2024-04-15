@@ -3,13 +3,9 @@ module.exports = {
    theme: {
       extend: {
          fontSize: {
-            sm: "0.8rem",
-            base: "1rem",
-            xl: "1.25rem",
-            "2xl": "1.563rem",
-            "3xl": "1.953rem",
-            "4xl": "2.441rem",
-            "5xl": "3.052rem",
+            sm: "10px",
+            base: "15px",
+            xl: "20px",
          },
          colors: {
             primary: "#DC3535",
@@ -17,17 +13,17 @@ module.exports = {
             dark: {
                100: "#000000",
                200: "#0C0F14",
-               300: "#52555A",
-               400: "#212734",
-               500: "#0C0F14",
+               300: "#1f2632",
+               400: "#32435a",
+               500: "#394e6b",
             },
             light: {
                900: "#FFFFFF",
-               800: "#AEAEAE",
-               850: "#FDFDFD",
-               700: "#DCE3F1",
-               500: "#7B8EC8",
-               400: "#858EAD",
+               800: "#FDFDFD",
+               850: "#dfdfdf",
+               700: "#c8c8c8",
+               500: "#AEAEAE",
+               400: "#252A32",
             },
          },
          backgroundImage: {

@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen";
-import { Ionicons, AntDesign } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import CardScreen from "../screens/CardScreen";
 import FavoritesScreen from "../screens/FavoritesScreen";
 import OrderScreen from "../screens/OrderScreen";

@@ -21,7 +21,7 @@ export default function App() {
                </NavigationContainer>
             </QueryClientProvider>
          </SafeAreaView>
-         <StatusBar backgroundColor={COLORS.primaryBlackHex} style="auto" />
+         <StatusBar backgroundColor={COLORS.primaryOrangeHex} style="auto" />
       </>
    );
 }
