@@ -6,6 +6,7 @@ import FavoritesScreen from "../screens/FavoritesScreen";
 import OrderScreen from "../screens/OrderScreen";
 import { COLORS } from "../theme/theme";
 import { BlurView } from "expo-blur";
+import HomeNavigation from "./HomeNavigation";
 
 const IconName = {
    Favorite: "heart",
@@ -45,7 +46,7 @@ export default function AppNavigator() {
             },
          })}
       >
-         <Tap.Screen name="Home" component={HomeScreen} />
+         <Tap.Screen name="Home" component={HomeNavigation} />
          <Tap.Screen name="Card" component={CardScreen} />
          <Tap.Screen name="Favorite" component={FavoritesScreen} />
          <Tap.Screen name="History" component={OrderScreen} />

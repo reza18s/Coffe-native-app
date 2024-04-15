@@ -1,11 +1,11 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
 import Card from "./Card";
-import CoffeeData from "../data/CoffeeData";
 
-export default function CardList({ items }) {
+export default function CardList({ items, ListRef }) {
    return (
       <View className="">
          <FlatList
+            ref={ListRef}
             className="pl-3 "
             horizontal
             data={items}

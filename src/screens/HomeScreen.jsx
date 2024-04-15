@@ -1,6 +1,6 @@
 import { ScrollView, Text, View } from "react-native";
 import { useStore } from "../context/useStore";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import HeaderBar from "../components/HeaderBar";
 import SearchBar from "../components/SearchBar";
 import CategoriesMenu from "../components/CategoriesMenu";
@@ -21,8 +21,13 @@ export default function HomeScreen() {
    );
    const [FilterValue, setFilterValue] = useState("All");
    const [FilterList, setFilterList] = useState(CoffeeList);
+   const ListRef = useRef();
 
    useEffect(() => {
+      ListRef?.current?.scrollToOffset({
+         animated: true,
+         offset: 0,
+      });
       if (FilterValue == "All") {
          return setFilterList(CoffeeList);
       }
@@ -42,9 +47,9 @@ export default function HomeScreen() {
                FilterValue={FilterValue}
                setFilterValue={setFilterValue}
             ></CategoriesMenu>
-            <CardList items={FilterList}></CardList>
+            <CardList items={FilterList} ListRef={ListRef}></CardList>
             <Text className="pl-4 text-lg text-white">Coffee Beans</Text>
-            <CardList items={BeanList}></CardList>
+            <CardList items={BeanList} ListRef={ListRef}></CardList>
          </ScrollView>
       </View>
    );
