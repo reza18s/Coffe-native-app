@@ -1,12 +1,12 @@
 import { Path, Svg } from "react-native-svg";
 
-export default function StarSvg() {
+export default function StarSvg({ size = 15 }) {
    return (
       <Svg
          xmlns="http://www.w3.org/2000/svg"
          viewBox="0 0 500 500"
-         height={15}
-         width={15}
+         height={size}
+         width={size}
          id="star"
       >
          <Path

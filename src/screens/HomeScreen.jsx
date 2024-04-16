@@ -50,6 +50,7 @@ export default function HomeScreen() {
             <CardList items={FilterList} ListRef={ListRef}></CardList>
             <Text className="pl-4 text-lg text-white">Coffee Beans</Text>
             <CardList items={BeanList} ListRef={ListRef}></CardList>
+            <View className="h-20"></View>
          </ScrollView>
       </View>
    );

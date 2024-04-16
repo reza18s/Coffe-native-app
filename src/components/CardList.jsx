@@ -1,7 +1,11 @@
 import { FlatList, View } from "react-native";
 import Card from "./Card";
+import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native";
 
 export default function CardList({ items, ListRef }) {
+   const navigation = useNavigation();
+
    return (
       <View className="">
          <FlatList
@@ -11,7 +15,15 @@ export default function CardList({ items, ListRef }) {
             data={items}
             extraData={items}
             key={(item) => item.id}
-            renderItem={Card}
+            renderItem={({ item }) => (
+               <TouchableOpacity
+                  onPress={() =>
+                     navigation.navigate("DetailScreen", { item: item })
+                  }
+               >
+                  <Card item={item}></Card>
+               </TouchableOpacity>
+            )}
          />
       </View>
    );

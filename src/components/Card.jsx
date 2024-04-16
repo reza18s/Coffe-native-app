@@ -22,7 +22,7 @@ export default function Card({ item }) {
                className="h-32 w-[105%]  items-end rounded-2xl"
             >
                <View className="h-5 w-[45%] flex-row items-center rounded-bl-2xl bg-dark-200/40 pl-2">
-                  <StarSvg></StarSvg>
+                  <StarSvg size={15}></StarSvg>
                   <Text className="pr-2 text-sm font-semibold text-white">
                      {item.average_rating}
                   </Text>
