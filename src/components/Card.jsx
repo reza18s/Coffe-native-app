@@ -1,10 +1,4 @@
-import {
-   Image,
-   ImageBackground,
-   Text,
-   TouchableOpacity,
-   View,
-} from "react-native";
+import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
 import { COLORS } from "../theme/theme";
 import { LinearGradient } from "expo-linear-gradient";
 import StarSvg from "../utils/Svg/StarSvg";
@@ -18,7 +12,7 @@ export default function Card({ item }) {
       >
          <View className="h-28  overflow-hidden rounded-2xl bg-white">
             <ImageBackground
-               source={item.imagelink_square}
+               source={item.imagelink_portrait - 19}
                className="h-32 w-[105%]  items-end rounded-2xl"
             >
                <View className="h-5 w-[45%] flex-row items-center rounded-bl-2xl bg-dark-200/40 pl-2">

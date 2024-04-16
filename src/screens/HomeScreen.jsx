@@ -5,7 +5,6 @@ import HeaderBar from "../components/HeaderBar";
 import SearchBar from "../components/SearchBar";
 import CategoriesMenu from "../components/CategoriesMenu";
 import CardList from "../components/CardList";
-import CoffeeData from "../data/CoffeeData";
 const getCategories = (CoffeeList) => {
    let list;
    list = CoffeeList.map((el) => el.name);
@@ -16,13 +15,13 @@ const getCategories = (CoffeeList) => {
 export default function HomeScreen() {
    const CoffeeList = useStore((state) => state.CoffeeList);
    const BeanList = useStore((state) => state.BeanList);
-   const [categories, setCategories] = useState(() =>
-      getCategories(CoffeeList),
-   );
+   const [categories, setCategories] = useState(getCategories(CoffeeList));
    const [FilterValue, setFilterValue] = useState("All");
-   const [FilterList, setFilterList] = useState(CoffeeList);
+   const [FilterList, setFilterList] = useState();
    const ListRef = useRef();
-
+   useEffect(() => {
+      setFilterList(CoffeeList);
+   }, [CoffeeList, BeanList]);
    useEffect(() => {
       ListRef?.current?.scrollToOffset({
          animated: true,

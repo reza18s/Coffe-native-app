@@ -9,17 +9,46 @@ import Heart_outline from "../utils/Svg/Heart_outline";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import PaymentFooter from "../components/PaymentFooter";
+import { useStore } from "../context/useStore";
 
 export default function DetailScreen({ route, type = "Coffee" }) {
    const { item } = route.params;
    const [Size, setSize] = useState(item.prices[0]);
+   const AddToCard = useStore((state) => state.addToCart);
+
+   // const calculateCartPrice = useStore((status) => status.calculateCartPrice);
+   const CardItem = useStore((status) => status.CardList);
+   console.log(CardItem);
 
    const navigation = useNavigation();
+   const AddToCardHandler = (CardItem) => {
+      const {
+         id,
+         index,
+         name,
+         roasted,
+         imagelink_square,
+         special_ingredient,
+         type,
+      } = CardItem;
+      AddToCard({
+         id,
+         index,
+         name,
+         roasted,
+         imagelink_square,
+         special_ingredient,
+         type,
+         prices: [{ ...Size, quantity: 1 }],
+      });
+      // calculateCartPrice();
+      // navigation.navigate("Card");
+   };
 
    return (
       <ScrollView className="flex-1 bg-dark-200 ">
          <ImageBackground
-            source={item.imagelink_portrait}
+            source={item.imagelink_portrait - 19}
             className="w-scree h-96 bg-cover "
          >
             <View className="w-screen flex-1 flex-row justify-between p-4">
@@ -99,7 +128,12 @@ export default function DetailScreen({ route, type = "Coffee" }) {
                   </TouchableOpacity>
                ))}
             </View>
-            <PaymentFooter price={Size.price}>Add to card</PaymentFooter>
+            <PaymentFooter
+               price={Size.price}
+               onPress={() => AddToCardHandler(item)}
+            >
+               Add to card
+            </PaymentFooter>
          </View>
       </ScrollView>
    );
