@@ -2,7 +2,36 @@ import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
 import { COLORS } from "../theme/theme";
 import { LinearGradient } from "expo-linear-gradient";
 import StarSvg from "../utils/Svg/StarSvg";
+import { useStore } from "../context/useStore";
+import { useNavigation } from "@react-navigation/native";
 export default function Card({ item }) {
+   const navigation = useNavigation();
+   const AddToCard = useStore((state) => state.addToCart);
+   const calculateCartPrice = useStore((status) => status.calculateCartPrice);
+   const AddToCardHandler = (CardItem) => {
+      const {
+         id,
+         index,
+         name,
+         roasted,
+         imagelink_square,
+         special_ingredient,
+         type,
+         prices,
+      } = CardItem;
+      AddToCard({
+         id,
+         index,
+         name,
+         roasted,
+         imagelink_square,
+         special_ingredient,
+         type,
+         prices: [{ ...prices[0], quantity: 1 }],
+      });
+      calculateCartPrice();
+      navigation.navigate("Card");
+   };
    return (
       <LinearGradient
          start={{ x: 0, y: 0 }}
@@ -34,7 +63,10 @@ export default function Card({ item }) {
                   {item.prices[0].price}
                </Text>
             </View>
-            <TouchableOpacity className="h-8 w-8 items-center justify-center rounded-lg  bg-secondary">
+            <TouchableOpacity
+               className="h-8 w-8 items-center justify-center rounded-lg  bg-secondary"
+               onPress={() => AddToCardHandler(item)}
+            >
                <Text className="items-center   text-lg text-white">+</Text>
             </TouchableOpacity>
          </View>

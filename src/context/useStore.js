@@ -11,7 +11,7 @@ export const useStore = create(
       (set, get) => ({
          CoffeeList: CoffeeData,
          BeanList: BeansData,
-         CardPrice: 0,
+         CartPrice: 0,
          CardList: [],
          FavoriteList: [],
          OrderHistory: [],
@@ -74,7 +74,7 @@ export const useStore = create(
                         .toString();
                      totalprice = totalprice + tempprice;
                   }
-                  state.CartPrice = totalprice.toFixed(2).toString();
+                  state.CardPrice = totalprice.toFixed(2);
                }),
             ),
          addToFavoriteList: (type, id) =>
@@ -226,7 +226,7 @@ export const useStore = create(
       }),
       {
          name: "coffee-app",
-         storage: createJSONStorage((val) => AsyncStorage),
+         storage: createJSONStorage(() => AsyncStorage),
       },
    ),
 );

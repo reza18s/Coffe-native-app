@@ -2,7 +2,6 @@ import { ImageBackground, ScrollView, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import StarSvg from "../utils/Svg/StarSvg";
 import CoffeeSvg from "../utils/Svg/CoffeSvg";
-import BeanSvg from "../utils/Svg/BeanSvg";
 import MilkSvg from "../utils/Svg/MilkSvg";
 import GoBackSvg from "../utils/Svg/GoBackSvg";
 import Heart_outline from "../utils/Svg/Heart_outline";
@@ -11,15 +10,15 @@ import { useState } from "react";
 import PaymentFooter from "../components/PaymentFooter";
 import { useStore } from "../context/useStore";
 
-export default function DetailScreen({ route, type = "Coffee" }) {
-   const { item } = route.params;
+export default function DetailScreen({ route }) {
+   const CoffeeList = useStore((status) => status.CoffeeList);
+   const BeanList = useStore((status) => status.BeanList);
+
+   let { type, id } = route.params;
+   const item = type == "coffee"?
    const [Size, setSize] = useState(item.prices[0]);
    const AddToCard = useStore((state) => state.addToCart);
-
-   // const calculateCartPrice = useStore((status) => status.calculateCartPrice);
-   const CardItem = useStore((status) => status.CardList);
-   console.log(CardItem);
-
+   const calculateCartPrice = useStore((status) => status.calculateCartPrice);
    const navigation = useNavigation();
    const AddToCardHandler = (CardItem) => {
       const {
@@ -41,8 +40,8 @@ export default function DetailScreen({ route, type = "Coffee" }) {
          type,
          prices: [{ ...Size, quantity: 1 }],
       });
-      // calculateCartPrice();
-      // navigation.navigate("Card");
+      calculateCartPrice();
+      navigation.navigate("Card");
    };
 
    return (
