@@ -3,7 +3,7 @@ import Card from "./Card";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 
-export default function CardList({ items, ListRef }) {
+export default function CardList({ items, ListRef, type }) {
    const navigation = useNavigation();
 
    return (
@@ -18,7 +18,10 @@ export default function CardList({ items, ListRef }) {
             renderItem={({ item }) => (
                <TouchableOpacity
                   onPress={() =>
-                     navigation.navigate("DetailScreen", { item: item })
+                     navigation.navigate("DetailScreen", {
+                        itemId: item.id,
+                        type: item.type,
+                     })
                   }
                >
                   <Card item={item}></Card>

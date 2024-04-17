@@ -14,8 +14,12 @@ export default function DetailScreen({ route }) {
    const CoffeeList = useStore((status) => status.CoffeeList);
    const BeanList = useStore((status) => status.BeanList);
 
-   let { type, id } = route.params;
-   const item = type == "coffee"?
+   let { type, itemId } = route.params;
+   const item =
+      type == "Coffee"
+         ? CoffeeList.find((el) => el.id == itemId)
+         : BeanList.find((el) => el.id == itemId);
+   console.log(item, itemId);
    const [Size, setSize] = useState(item.prices[0]);
    const AddToCard = useStore((state) => state.addToCart);
    const calculateCartPrice = useStore((status) => status.calculateCartPrice);

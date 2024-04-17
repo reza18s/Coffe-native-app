@@ -23,7 +23,8 @@ export default function CardItem({ CardList, decrease, increase }) {
                      <TouchableOpacity
                         onPress={() =>
                            navigation.navigate("DetailScreen", {
-                              item: CoffeeList.find((el) => el.id == item.id),
+                              itemId: item.id,
+                              type: item.type,
                            })
                         }
                      >
