@@ -9,17 +9,24 @@ import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import PaymentFooter from "../components/PaymentFooter";
 import { useStore } from "../context/useStore";
+import HeartSvg from "../utils/Svg/HeartSvg";
 
 export default function DetailScreen({ route }) {
    const CoffeeList = useStore((status) => status.CoffeeList);
    const BeanList = useStore((status) => status.BeanList);
+   const FavoritesList = useStore((status) => status.FavoritesList);
+   const addToFavoriteList = useStore((status) => status.addToFavoriteList);
+   const deleteFromFavoriteList = useStore(
+      (status) => status.deleteFromFavoriteList,
+   );
 
    let { type, itemId } = route.params;
    const item =
       type == "Coffee"
          ? CoffeeList.find((el) => el.id == itemId)
          : BeanList.find((el) => el.id == itemId);
-   console.log(item, itemId);
+
+   const isFavorite = FavoritesList.find((el) => el.id == item.id);
    const [Size, setSize] = useState(item.prices[0]);
    const AddToCard = useStore((state) => state.addToCart);
    const calculateCartPrice = useStore((status) => status.calculateCartPrice);
@@ -47,6 +54,13 @@ export default function DetailScreen({ route }) {
       calculateCartPrice();
       navigation.navigate("Card");
    };
+   const HandelFavorite = (id, type) => {
+      if (isFavorite) {
+         deleteFromFavoriteList(id, type);
+      } else {
+         addToFavoriteList(id, type);
+      }
+   };
 
    return (
       <ScrollView className="flex-1 bg-dark-200 ">
@@ -61,8 +75,15 @@ export default function DetailScreen({ route }) {
                >
                   <GoBackSvg></GoBackSvg>
                </TouchableOpacity>
-               <TouchableOpacity className="rounded-md bg-dark-200 p-1">
-                  <Heart_outline></Heart_outline>
+               <TouchableOpacity
+                  className="rounded-md bg-dark-200 p-1"
+                  onPress={() => HandelFavorite(item.type, item.id)}
+               >
+                  {isFavorite ? (
+                     <HeartSvg></HeartSvg>
+                  ) : (
+                     <Heart_outline></Heart_outline>
+                  )}
                </TouchableOpacity>
             </View>
             <View className="h-36  rounded-t-3xl bg-dark-200/50 p-4">

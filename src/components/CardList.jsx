@@ -3,7 +3,7 @@ import Card from "./Card";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native";
 
-export default function CardList({ items, ListRef, type }) {
+export default function CardList({ items, ListRef }) {
    const navigation = useNavigation();
 
    return (

@@ -19,8 +19,9 @@ export default function CardItem({ CardList, decrease, increase }) {
                   colors={[COLORS.primaryGreyHex, COLORS.primaryBlackHex]}
                   className="m-2  w-full rounded-2xl px-2 py-2"
                >
-                  <View className="flex-row ">
+                  <View>
                      <TouchableOpacity
+                        className="flex-row "
                         onPress={() =>
                            navigation.navigate("DetailScreen", {
                               itemId: item.id,
@@ -32,65 +33,65 @@ export default function CardItem({ CardList, decrease, increase }) {
                            source={item.imagelink_square - 19}
                            className={`mr-2 rounded-xl ${item.prices.length !== 1 ? "h-24 w-24" : "h-32 w-32"}`}
                         ></Image>
-                     </TouchableOpacity>
-                     <View className="w-[55%]">
-                        <Text className="text-lg font-semibold text-white ">
-                           {item.name}
-                        </Text>
-                        <Text className="text-sm font-thin text-white">
-                           {item.special_ingredient}
-                        </Text>
-                        {item.prices.length !== 1 ? (
-                           <View className="mt-2 w-32 items-center  rounded-xl bg-light-400 px-4 py-3">
-                              <Text className="text-sm font-semibold text-white">
-                                 {item.roasted}
-                              </Text>
-                           </View>
-                        ) : (
-                           <>
-                              <View className="flex-row py-2">
-                                 <View className="mr-8 h-8 w-16 justify-center rounded-xl bg-light-400">
-                                    <Text className="text-center text-white ">
-                                       {item.prices[0].size}
-                                    </Text>
-                                 </View>
-                                 <View className="flex-row ">
-                                    <Text className="mr-1 text-lg text-secondary">
-                                       $
-                                    </Text>
-                                    <Text className=" text-lg text-white">
-                                       {item.ItemPrice}
-                                    </Text>
-                                 </View>
-                              </View>
-                              <View className="flex-row justify-between">
-                                 <TouchableOpacity
-                                    className="h-8 w-8 items-center justify-center rounded-lg  bg-secondary"
-                                    onPress={() =>
-                                       decrease(item.id, item.prices[0].size)
-                                    }
-                                 >
-                                    <Text className="items-center text-lg text-white">
-                                       -
-                                    </Text>
-                                 </TouchableOpacity>
-                                 <Text className="w-16 rounded-lg bg-light-400 text-center text-lg font-semibold text-white">
-                                    {item.prices[0].quantity}
+                        <View className="w-[55%]">
+                           <Text className="text-lg font-semibold text-white ">
+                              {item.name}
+                           </Text>
+                           <Text className="text-sm font-thin text-white">
+                              {item.special_ingredient}
+                           </Text>
+                           {item.prices.length !== 1 ? (
+                              <View className="mt-2 w-32 items-center  rounded-xl bg-light-400 px-4 py-3">
+                                 <Text className="text-sm font-semibold text-white">
+                                    {item.roasted}
                                  </Text>
-                                 <TouchableOpacity
-                                    className="h-8 w-8 items-center justify-center rounded-lg  bg-secondary"
-                                    onPress={() =>
-                                       increase(item.id, item.prices[0].size)
-                                    }
-                                 >
-                                    <Text className="items-center   text-lg text-white">
-                                       +
-                                    </Text>
-                                 </TouchableOpacity>
                               </View>
-                           </>
-                        )}
-                     </View>
+                           ) : (
+                              <>
+                                 <View className="flex-row py-2">
+                                    <View className="mr-8 h-8 w-16 justify-center rounded-xl bg-light-400">
+                                       <Text className="text-center text-white ">
+                                          {item.prices[0].size}
+                                       </Text>
+                                    </View>
+                                    <View className="flex-row ">
+                                       <Text className="mr-1 text-lg text-secondary">
+                                          $
+                                       </Text>
+                                       <Text className=" text-lg text-white">
+                                          {item.ItemPrice}
+                                       </Text>
+                                    </View>
+                                 </View>
+                                 <View className="flex-row justify-between">
+                                    <TouchableOpacity
+                                       className="h-8 w-8 items-center justify-center rounded-lg  bg-secondary"
+                                       onPress={() =>
+                                          decrease(item.id, item.prices[0].size)
+                                       }
+                                    >
+                                       <Text className="items-center text-lg text-white">
+                                          -
+                                       </Text>
+                                    </TouchableOpacity>
+                                    <Text className="w-16 rounded-lg bg-light-400 text-center text-lg font-semibold text-white">
+                                       {item.prices[0].quantity}
+                                    </Text>
+                                    <TouchableOpacity
+                                       className="h-8 w-8 items-center justify-center rounded-lg  bg-secondary"
+                                       onPress={() =>
+                                          increase(item.id, item.prices[0].size)
+                                       }
+                                    >
+                                       <Text className="items-center   text-lg text-white">
+                                          +
+                                       </Text>
+                                    </TouchableOpacity>
+                                 </View>
+                              </>
+                           )}
+                        </View>
+                     </TouchableOpacity>
                   </View>
                   {item.prices.length > 1 &&
                      item.prices.map((el) => (

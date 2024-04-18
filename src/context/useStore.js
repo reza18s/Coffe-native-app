@@ -13,7 +13,7 @@ export const useStore = create(
          BeanList: BeansData,
          CartPrice: 0,
          CardList: [],
-         FavoriteList: [],
+         FavoritesList: [],
          OrderHistory: [],
          addToCart: (cartItem) =>
             set(
