@@ -4,10 +4,10 @@
     "slug": "Coffee",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/image/CoffeeIcon.png",
+    "icon": "./src/assets/image/CoffeeIcon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/image/CoffeeIcon.png",
+      "image": "./src/assets/image/CoffeeIcon.png",
       "resizeMode": "contain",
       "backgroundColor": "#0C0F14"
     },
@@ -19,13 +19,13 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/image/CoffeeIcon.png",
+        "foregroundImage": "./src/assets/image/CoffeeIcon.png",
         "backgroundColor": "#0C0F14"
       },
       "package": "com.swary.Coffee"
     },
     "web": {
-      "favicon": "./assets/image/CoffeeIcon.png"
+      "favicon": "./src/assets/image/CoffeeIcon.png"
     },
     "extra": {
       "eas": {

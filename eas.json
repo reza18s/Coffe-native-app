@@ -8,14 +8,9 @@
       "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal",
-      "android": {
-        "buildType": "apk"
-      }
+      "distribution": "internal"
     },
-    "production": {
-      "node": "18.20.1"
-    }
+    "production": {}
   },
   "submit": {
     "production": {}
