@@ -6,6 +6,9 @@ import { COLORS } from "../theme/theme";
 import WalletSvg from "../utils/Svg/WallletSvg";
 import VisaSvg from "../utils/Svg/VisaSvg";
 import CimCardSvg from "../utils/Svg/CimCardSvg";
+import { useStore } from "../context/useStore";
+import { useNavigation } from "@react-navigation/native";
+import PopupAnimation from "../components/PopupAnimation";
 const PaymentList = [
    {
       name: "Wallet",
@@ -31,6 +34,10 @@ const PaymentList = [
    },
 ];
 export default function PaymentScreen({ route }) {
+   const calculateCartPrice = useStore((status) => status.calculateCartPrice);
+   const addToOrderHistoryListFromCart = useStore(
+      (status) => status.addToOrderHistoryListFromCart,
+   );
    const [PaymentMode, setPaymentMode] = useState("Credit card");
    const [CardYear, setCardYear] = useState("00");
    const [CardMonth, setCardMonth] = useState("00");
@@ -41,10 +48,12 @@ export default function PaymentScreen({ route }) {
       "1234",
    ]);
    const [CardName, setCardName] = useState("robert janson");
+   const [ShowAnimation, setShowAnimation] = useState(false);
 
    const CardNameRef = useRef(null);
    const CardYearRef = useRef(null);
    const CardMonthRef = useRef(null);
+   const navigation = useNavigation();
 
    const inputRefs = Array.from({ length: 4 }, () => useRef(null));
 
@@ -64,8 +73,25 @@ export default function PaymentScreen({ route }) {
          inputRefs[index - 1].current.focus();
       }
    };
+   const HandelSubmit = () => {
+      setShowAnimation(true);
+      calculateCartPrice();
+      addToOrderHistoryListFromCart();
+      setTimeout(() => {
+         setShowAnimation(false);
+         navigation.navigate("History");
+      }, 1300);
+   };
    return (
       <View className="flex-1  bg-dark-200 p-2">
+         {ShowAnimation ? (
+            <PopupAnimation
+               // eslint-disable-next-line no-undef
+               src={require("../lottie/successful.json")}
+            ></PopupAnimation>
+         ) : (
+            <></>
+         )}
          <TouchableOpacity onPress={() => setPaymentMode("Credit card")}>
             <LinearGradient
                start={{ x: 0, y: 0 }}
@@ -152,7 +178,10 @@ export default function PaymentScreen({ route }) {
             </TouchableOpacity>
          ))}
          <View className="flex-1"></View>
-         <PaymentFooter price={route.params.price}>
+         <PaymentFooter
+            price={route.params.price}
+            onPress={() => HandelSubmit()}
+         >
             Pay from {PaymentMode}
          </PaymentFooter>
       </View>
