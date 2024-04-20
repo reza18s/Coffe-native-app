@@ -4,6 +4,7 @@ import HeaderBar from "../components/HeaderBar";
 import PaymentFooter from "../components/PaymentFooter";
 import EmptyListAnimation from "../components/EmptyListAnimation";
 import CardItem from "../components/CardItem";
+import { useNavigation } from "@react-navigation/native";
 
 export default function CardScreen() {
    const CardList = useStore((status) => status.CardList);
@@ -23,6 +24,7 @@ export default function CardScreen() {
       decrementCartItemQuantity(id, size);
       calculateCartPrice();
    };
+   const navigation = useNavigation();
    return (
       <View className=" flex-1 bg-dark-200">
          <ScrollView>
@@ -37,7 +39,16 @@ export default function CardScreen() {
                         decrease={decreaseQuantityHandler}
                         increase={increaseQuantityHandler}
                      ></CardItem>
-                     <PaymentFooter price={CardPrice}>pay</PaymentFooter>
+                     <PaymentFooter
+                        price={CardPrice}
+                        onPress={() =>
+                           navigation.navigate("PaymentScreen", {
+                              price: CardPrice,
+                           })
+                        }
+                     >
+                        pay
+                     </PaymentFooter>
                   </View>
                )}
             </View>

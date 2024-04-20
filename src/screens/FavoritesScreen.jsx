@@ -57,7 +57,7 @@ export default function FavoritesScreen() {
                      <View className="h-36  rounded-t-3xl bg-dark-200/50 p-4">
                         <View className="flex-row justify-between">
                            <View>
-                              <Text className="text-2xl font-bold text-white">
+                              <Text className=" text-xl font-bold text-white">
                                  {item.name}
                               </Text>
                               <Text className=" text-xs font-thin text-gray-100">

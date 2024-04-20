@@ -4,6 +4,7 @@ import {
 } from "@react-navigation/stack";
 import DetailScreen from "../screens/DetailScreen";
 import HomeNavigation from "./HomeNavigation";
+import PaymentScreen from "../screens/PaymentScreen";
 
 const Stack = createStackNavigator();
 export default function AppNavigation() {
@@ -18,6 +19,10 @@ export default function AppNavigation() {
          <Stack.Screen
             name="DetailScreen"
             component={DetailScreen}
+         ></Stack.Screen>
+         <Stack.Screen
+            name="PaymentScreen"
+            component={PaymentScreen}
          ></Stack.Screen>
       </Stack.Navigator>
    );

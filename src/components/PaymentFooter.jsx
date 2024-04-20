@@ -12,7 +12,7 @@ export default function PaymentFooter({ price, children, onPress }) {
             className="h-12 w-48  items-center justify-center rounded-xl  bg-secondary"
             onPress={onPress}
          >
-            <Text className="items-center   text-lg text-white">
+            <Text className="text-md  items-center font-semibold text-white">
                {children}
             </Text>
          </TouchableOpacity>
