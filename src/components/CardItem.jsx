@@ -30,7 +30,7 @@ export default function CardItem({ CardList, decrease, increase }) {
                         }
                      >
                         <Image
-                           source={item.imagelink_square - 19}
+                           source={item.imagelink_square}
                            className={`mr-2 rounded-xl ${item.prices.length !== 1 ? "h-24 w-24" : "h-32 w-32"}`}
                         ></Image>
                         <View className="w-[55%]">

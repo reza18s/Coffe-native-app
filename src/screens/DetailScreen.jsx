@@ -65,7 +65,7 @@ export default function DetailScreen({ route }) {
    return (
       <ScrollView className="flex-1 bg-dark-200 ">
          <ImageBackground
-            source={item.imagelink_portrait - 19}
+            source={item.imagelink_portrait}
             className="w-scree h-96 bg-cover "
          >
             <View className="w-screen flex-1 flex-row justify-between p-4">

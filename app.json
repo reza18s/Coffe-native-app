@@ -1,17 +1,19 @@
 {
    "expo": {
-      "name": "Coffe",
-      "slug": "Coffe",
+      "name": "Coffee",
+      "slug": "Coffee",
       "version": "1.0.0",
       "orientation": "portrait",
-      "icon": "./assets/icon.png",
+      "icon": "./assets/CoffeeIcon.png",
       "userInterfaceStyle": "light",
       "splash": {
-         "image": "./assets/splash.png",
+         "image": "./assets/CoffeeIcon.png",
          "resizeMode": "contain",
          "backgroundColor": "#0C0F14"
       },
-      "assetBundlePatterns": ["**/*"],
+      "assetBundlePatterns": [
+         "**/*"
+      ],
       "ios": {
          "supportsTablet": true
       },
